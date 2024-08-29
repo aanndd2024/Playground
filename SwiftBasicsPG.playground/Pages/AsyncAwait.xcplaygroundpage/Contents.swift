@@ -1,4 +1,26 @@
 //: [Previous](@previous)
+/*:
+1. Concurrent Execution
+* async indicate that a function returns its result asynchronously
+- await waits for all tasks to complete.
+
+ Concurrent Execution\
+ async let allows you to start multiple asynchronous tasks concurrently and await their results later.\
+ async let post1 = fetchPost(id: ids[0])\
+ async let post2 = fetchPost(id: ids[1])\
+ async let post3 = fetchPost(id: ids[2])\
+ Await all results concurrently\
+ let posts = try await [post1, post2, post3]\
+ 
+ Sequential Execution\
+ let post1 = try await fetchPost(id: ids[0])\
+ let post2 = try await fetchPost(id: ids[1])\
+ let post3 = try await fetchPost(id: ids[2])\
+ return [post1, post2, post3]\
+ Here each post is fetched one after the other, This can result in slower overall execution time compared to the concurrent example using async let.
+
+ */
+
 
 import Foundation
 
@@ -29,7 +51,7 @@ func fetchPost(id: Int) async -> Result<Post, FetchError> {
     }
 }
 
-//: Note- Parallel Asynchronous Operations
+//Parallel Asynchronous Operations
 func fetchMultiplePostsInParallel(ids: [Int]) async -> [Post] {
     var posts: [Post] = []
     
@@ -63,7 +85,7 @@ Task {
     //print("Fetched posts: \(posts)")
 }
 
-// Fetching posts one after the other
+//Fetching posts one after the other
 func fetchPostsSequentially(ids: [Int]) async -> [Post] {
     var posts: [Post] = []
     
@@ -87,19 +109,6 @@ Task {
     let posts = await fetchPostsSequentially(ids: ids)
     //print("Fetched posts: \(posts)")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //: [Next](@next)
