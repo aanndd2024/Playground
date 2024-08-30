@@ -5,5 +5,14 @@
         <page name='Tuples'/>
         <page name='Enum'/>
         <page name='AsyncAwait'/>
+        <page name='Generics'/>
+        <page name='Closure'/>
+        <page name='GCD'/>
+        <page name='OperationQueue'/>
+        <page name='RestAPICompletionHandler'/>
+        <page name='HigherOrderFunctions'/>
+        <page name='MVVM'/>
+        <page name='VIPER'/>
+        <page name='SolidPrinciple'/>
     </pages>
 </playground>

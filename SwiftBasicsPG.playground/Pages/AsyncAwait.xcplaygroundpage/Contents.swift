@@ -4,7 +4,7 @@
 * async indicate that a function returns its result asynchronously
 - await waits for all tasks to complete.
 
- Concurrent Execution\
+ __Concurrent Execution__\
  async let allows you to start multiple asynchronous tasks concurrently and await their results later.\
  async let post1 = fetchPost(id: ids[0])\
  async let post2 = fetchPost(id: ids[1])\
@@ -12,7 +12,7 @@
  Await all results concurrently\
  let posts = try await [post1, post2, post3]\
  
- Sequential Execution\
+ __Sequential Execution__\
  let post1 = try await fetchPost(id: ids[0])\
  let post2 = try await fetchPost(id: ids[1])\
  let post3 = try await fetchPost(id: ids[2])\
