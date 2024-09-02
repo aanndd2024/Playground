@@ -1,9 +1,11 @@
 //: [Previous](@previous)
 import Foundation
 /*:
- __Associated Values__\
+ ***
+ Associated Values\
  Enumerations in Swift can have associated values, which allow you to attach additional information to each case.\
  This is useful when you want to store different types of information for each case.
+ ***
  */
 enum Barcode {
     case upc(Int, Int, Int, Int)
@@ -21,8 +23,10 @@ case .qrCode(let productCode):
 }
 
 /*:
- __Methods in Enums__\
+ ***
+ Methods in Enums\
  You can define methods inside an enum to add behavior related to the cases:
+ ***
  */
 enum TrafficLight {
     case red, yellow, green
@@ -44,8 +48,10 @@ let light = TrafficLight.red
 print(light.description()) // Output: Stop
 
 /*:
- __Enum with Associated Values and Methods__\
+ ***
+ Enum with Associated Values and Methods\
  You can combine associated values and methods to create more complex enums:
+ ***
  */
 enum Vehicle {
     case car(speed: Int)
@@ -67,8 +73,10 @@ let myVehicle = Vehicle.car(speed: 120)
 print(myVehicle.description()) // Output: Car traveling at 120 km/h
 
 /*:
- __Enum with CaseIterable__\
+ ***
+ Enum with CaseIterable\
  Swift provides the CaseIterable protocol, which enables you to create an array containing all the cases of an enum.
+ ***
  */
 enum Beverage: CaseIterable {
     case coffee, tea, juice, water
@@ -83,9 +91,11 @@ for beverage in Beverage.allCases {
 }
 
 /*:
- __Enum with Protocol__\
+ ***
+ Enum with Protocol\
  Enums in Swift can conform to protocols, just like classes and structs.\
  This allows you to define shared behavior across different enum cases.
+ ***
  */
 protocol Displayable {
     func displayName() -> String
