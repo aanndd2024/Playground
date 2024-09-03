@@ -13,7 +13,7 @@
  - [Closure](Closure)
  - [GCD](GCD)
  - [OperationQueue](OperationQueue)
- - [RestAPICOmpletionHandler](RestAPICOmpletionHandler)
+ - [Rest API CompletionHandler](RestAPICompletionHandler)
  - [HigherOrderFunction](HigherOrderFunction)
  - [MVVM](MVVM)
  - [VIPER](VIPER)
