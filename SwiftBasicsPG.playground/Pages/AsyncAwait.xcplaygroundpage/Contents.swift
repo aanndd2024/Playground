@@ -107,7 +107,7 @@ func fetchPostsSequentially(ids: [Int]) async -> [Post] {
 Task {
     let ids = [1, 2, 3]
     let posts = await fetchPostsSequentially(ids: ids)
-    //print("Fetched posts: \(posts)")
+    print("Fetched posts: \(posts)")
 }
 
 
