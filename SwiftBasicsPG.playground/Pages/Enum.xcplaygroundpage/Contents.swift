@@ -137,4 +137,25 @@ enum Currency: String, Displayable, Valuable {
 let currency = Currency.eur
 print(currency.displayName()) // Output: Euro
 print(currency.value)          // Output: 0.85
+
+
+/*:
+ ***
+ Enum Case with Shared Behavior - Using Static Methods
+ ***
+ */
+
+enum PaymentStatus {
+    case pending, completed, failed
+    
+    static func processPayment(for status: PaymentStatus) -> String {
+        switch status {
+        case .pending: return "Payment is pending."
+        case .completed: return "Payment is completed."
+        case .failed: return "Payment has failed."
+        }
+    }
+}
+
+print(PaymentStatus.processPayment(for: .completed))
 //: [Next](@next)
