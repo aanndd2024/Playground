@@ -2,6 +2,15 @@
 
 import Foundation
 
+
+/*:
+ ***
+ **Open Close Principle** - Should be open for extension but closed for modification\
+ Allowing new features to be added without altering existing code, thus reducing the risk of bugs.
+ ***
+ */
+
+
 /*:
  ***
  **Interface Segregation Principle (ISP)**\
