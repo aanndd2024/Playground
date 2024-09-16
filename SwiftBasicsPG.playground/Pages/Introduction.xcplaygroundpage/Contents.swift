@@ -14,7 +14,7 @@
  - [GCD](GCD)
  - [OperationQueue](OperationQueue)
  - [Rest API CompletionHandler](RestAPICompletionHandler)
- - [HigherOrderFunction](HigherOrderFunction)
+ - [Higher Order Function](HigherOrderFunctions)
  - [MVVM](MVVM)
  - [VIPER](VIPER)
  - [SolidPrinciple](SolidPrinciple)
