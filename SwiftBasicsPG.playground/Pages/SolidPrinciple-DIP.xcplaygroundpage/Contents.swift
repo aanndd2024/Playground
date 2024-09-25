@@ -8,6 +8,7 @@
  ***
  */
 import Foundation
+import XCTest
 // Violation of DIP
 struct DebitCardPayment {
     func pay(_ amount: Double) { }
@@ -53,19 +54,19 @@ protocol PaymentMethod {
     func pay(_ amount: Double)
 }
 
-struct DebitCardPayment: PaymentMethod {
+struct DebitCardPayment1: PaymentMethod {
     func pay(_ amount: Double) { }
 }
 
-struct CreditCardPayment: PaymentMethod {
+struct CreditCardPayment1: PaymentMethod {
     func pay(_ amount: Double) { }
 }
 
-struct ApplePayPayment: PaymentMethod {
+struct ApplePayPayment1: PaymentMethod {
     func pay(_ amount: Double) { }
 }
 
-struct Payment {
+struct Payment1 {
     private let paymentMethod: PaymentMethod
     
     init(method: PaymentMethod) {
@@ -77,9 +78,50 @@ struct Payment {
     }
 }
 
-let creditCardPaymentMethod = CreditCardPayment()
+let creditCardPaymentMethod1 = CreditCardPayment1()
 
-let payment = Payment(method: creditCardPaymentMethod)
-payment.makePayment(of: 500)
+let payment1 = Payment1(method: creditCardPaymentMethod1)
+payment1.makePayment(of: 500)
 
+
+// MARK: - Test Case for Payment Class
+
+
+class MockPaymentMethod: PaymentMethod {
+    var wasCalled = false
+    var paidAmount: Double?
+
+    func pay(_ amount: Double) {
+        paidAmount = amount
+        wasCalled = true
+    }
+
+//    func pay(_ amount: Double) {
+//        wasCalled = true
+//        paidAmount = amount
+//    }
+}
+
+
+class PaymentTests: XCTestCase {
+    func testMakePaymentWithMockPaymentMethod() {
+        // Arrange: Create a mock payment method
+        let mockPaymentMethod = MockPaymentMethod()
+        
+        // Create an instance of Payment using the mock payment method
+        let payment = Payment1(method: mockPaymentMethod)
+        
+        // Act: Make a payment
+        let amount = 500.0
+        payment.makePayment(of: amount)
+        
+        // Assert: Verify that the mock method's `pay` function was called and the correct amount was passed
+        XCTAssertTrue(mockPaymentMethod.wasCalled, "The pay method should have been called.")
+        XCTAssertEqual(mockPaymentMethod.paidAmount, amount, "The paid amount should be \(amount).")
+    }
+}
+
+// MARK: - Run Test Case
+
+PaymentTests.defaultTestSuite.run()
 //: [Next](@next)
