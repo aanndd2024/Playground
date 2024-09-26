@@ -124,4 +124,65 @@ class PaymentTests: XCTestCase {
 // MARK: - Run Test Case
 
 PaymentTests.defaultTestSuite.run()
+
+/*:
+ Issue:\
+ This setup violates DIP because NotificationManager is tightly coupled to EmailService. If we want to introduce another notification method, like SMS, we’ll have to modify the NotificationManager class, which breaks the principle.
+ */
+class EmailService {
+    func sendEmail(message: String) {
+        print("Sending email: \(message)")
+    }
+}
+
+class NotificationManager {
+    let emailService = EmailService()
+    
+    func sendNotification(message: String) {
+        emailService.sendEmail(message: message)
+    }
+}
+
+/*:
+ Solution:\
+ Now, NotificationManager depends on an abstraction (NotificationService) rather than a concrete class (EmailService). This allows for flexibility in switching between notification services without modifying the NotificationManager.
+ */
+protocol NotificationService {
+    func sendNotification(message: String)
+}
+
+class EmailService1: NotificationService {
+    func sendNotification(message: String) {
+        print("Sending email: \(message)")
+    }
+}
+
+class SMSService: NotificationService {
+    func sendNotification(message: String) {
+        print("Sending SMS: \(message)")
+    }
+}
+
+class NotificationManager1 {
+    let notificationService: NotificationService
+    
+    init(service: NotificationService) {
+        self.notificationService = service
+    }
+    
+    func notify(message: String) {
+        notificationService.sendNotification(message: message)
+    }
+}
+
+// Usage
+let emailService = EmailService1()
+let smsService = SMSService()
+
+let emailNotificationManager = NotificationManager1(service: emailService)
+emailNotificationManager.notify(message: "You've got mail!")
+
+let smsNotificationManager = NotificationManager1(service: smsService)
+smsNotificationManager.notify(message: "You've got a text!")
+
 //: [Next](@next)
