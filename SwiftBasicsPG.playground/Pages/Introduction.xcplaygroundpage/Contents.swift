@@ -17,6 +17,12 @@
  - [Higher Order Function](HigherOrderFunctions)
  - [MVVM](MVVM)
  - [VIPER](VIPER)
- - [SolidPrinciple](SolidPrinciple)
+ - [Depedency Inversion Principle](SolidPrinciple-DIP)
+ - [Interface Segregation Principle](SolidPrinciple-ISP)
+ - [Liskov Substitution Principle](SolidPrinciple-LSP)
+ - [Open Close Principle](SolidPrinciple-OCP)
+ - [Single Responsibility Principle](SolidPrinciple-SRP)
+ - [DispatchGroup-OperationQueue-AsyncAwait](Dispatch+Operation+AsyncAwait)
+
 
  */
